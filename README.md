@@ -12,6 +12,7 @@
 <h2>Shortcuts</h2>
 <p>To pause the Timer: CTRL+ALT+P</p>
 <p>To enable/disable Happy Hour: CTRL+ALT+H</p>
+<p>Shortcuts can be changed in config.js</p>
 <br/>
 
 <h2>Preview</h2>
