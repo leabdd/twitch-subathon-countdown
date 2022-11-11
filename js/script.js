@@ -39,21 +39,39 @@ resetBtn.addEventListener("click", function(){
 	endingTime = timeFunc.addHours(timeNow, initialHours);
 	endingTime = timeFunc.addMinutes(timeNow, initialMinutes);
 	endingTime = timeFunc.addSeconds(timeNow, initialSeconds); 
-	
+
 	window.localStorage.removeItem('initialHours');
 	window.localStorage.removeItem('initialMinutes');
 	window.localStorage.removeItem('initialSeconds');
-	
+
 	logMessage("Core", "Timer Reset.");
 });
 
 
 startBtn.addEventListener("click", function(){
 
-	if(paused == true){
-		initialHours = window.localStorage.getItem('initialHours')
-		initialMinutes = window.localStorage.getItem('initialMinutes')
-		initialSeconds = window.localStorage.getItem('initialSeconds')
+	if(paused){
+		var initialHoursLocal = window.localStorage.getItem('initialHours')
+		if(initialHoursLocal !== null) {
+			initialHours  = initialHoursLocal;
+			logMessage("Core", "Found initialHours in localStorage.")
+		} else {
+			initialHours = initialHoursConfig;
+		}
+		var initialMinutesLocal = window.localStorage.getItem('initialMinutes')
+		if(initialMinutesLocal !== null) {
+			initialMinutes = initialMinutesLocal;
+			logMessage("Core", "Found initialMinutes in localStorage.")
+		} else {
+			initialMinutes = initialMinutesConfig;
+		}
+		var initialSecondsLocal = window.localStorage.getItem('initialSeconds')
+		if(initialSecondsLocal !== null) {
+			initialSeconds  = initialSecondsLocal;
+			logMessage("Core", "Found initialSeconds in localStorage.")
+		} else {
+			initialSeconds = initialSecondsConfig;
+		}
 	}
 	
 	let timeNow = new Date(Date.now());
@@ -78,7 +96,7 @@ Mousetrap.bind(pauseShort, function(e) {
 });
 
 Mousetrap.bind(happyHourShort, async function(e){
-	if(happy_hour == true && happy_hour_active == false){
+	if(!happy_hour_active){
 		logMessage("Core","Happy Hour activated");
 		happy_hour_active = true;
 		document.getElementById("HappyHourText").innerHTML = "Happy Hour Activated!";
@@ -91,7 +109,7 @@ Mousetrap.bind(happyHourShort, async function(e){
 		document.getElementById("HappyHourText").animate({opacity: [ 1, 0 ], easing: [ 'ease-in', 'ease-out' ],}, 500);
 		document.getElementById("HappyHourText").style.opacity = "0";
 	}
-	else if(happy_hour == true && happy_hour_active == true){
+	else if(happy_hour_active){
 		logMessage("Core", "Happy Hour deactivated")
 		happy_hour_active = false;
 		document.getElementById("HappyHourText").innerHTML = "Happy Hour Deactivated";
@@ -104,7 +122,7 @@ Mousetrap.bind(happyHourShort, async function(e){
 		document.getElementById("HappyHourText").animate({opacity: [ 1, 0 ], easing: [ 'ease-in', 'ease-out' ],}, 500);
 		document.getElementById("HappyHourText").style.opacity = "0";
 	}
-	else if(happy_hour == false){
+	else {
 		logMessage("Core", "Happy Hour is not available")
 		document.getElementById("HappyHourText").innerHTML = "Happy Hour error";
 		document.getElementById("HappyHourText").animate({opacity: [ 0, 1 ], easing: [ 'ease-in', 'ease-out' ],}, 500);
@@ -138,7 +156,7 @@ const getNextTime = () => {
 		countdownEnded = true;
 		time = "00:00:00";
 	}
-	if(paused == false){
+	if(!paused){
 		window.localStorage.setItem('initialHours', timeFunc.getHours(differenceTime));
 		window.localStorage.setItem('initialMinutes', timeFunc.getMinutes(differenceTime));
 		window.localStorage.setItem('initialSeconds', timeFunc.getSeconds(differenceTime));
@@ -182,16 +200,10 @@ const addTimeInternal = async () => {
     firstSub = true;
     
     let addedTime = document.createElement("p");
-	if(happy_hour == true && happy_hour_active == true) {
+	if(happy_hour_active) {
 		addedTime.classList = "gold";
 	}
-	else if(happy_hour == true && happy_hour_active == false) {
-		addedTime.classList = "addedTime";
-	}
-	else if(happy_hour == false && happy_hour_active == true) {
-		addedTime.classList = "addedTime";
-	}
-	else if(happy_hour == false && happy_hour_active == false) {
+	else {
 		addedTime.classList = "addedTime";
 	}
     addedTime.innerText = `+${s}s`;
