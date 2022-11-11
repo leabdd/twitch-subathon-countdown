@@ -34,8 +34,8 @@ if (streamelements_token !== "") {
 
         function onEvent(data) {
             logObject("StreamElements", data);
-            if (!countdownEnded) {
-                if (data['listener'] === "subscriber-latest") {
+            if (!countdownEnded && !happy_hour_active) {
+                if ((data['listener'] === "subscriber-latest") && subEnable) {
                     if (data['event']['gifted'] || data['event']['bulkGifted']) {
                         let amount;
                         if (data['event']['gifted']) amount = 1;
@@ -94,7 +94,7 @@ if (streamelements_token !== "") {
                     }
                 }
 
-                else if (data['listener'] === "cheer-latest") {
+                else if ((data['listener'] === "cheer-latest") && bitEnable) {
                     if (data['event']['amount'] >= min_amount_of_bits) {
                         let times = Math.floor(data['event']['amount']/min_amount_of_bits);
                         addTime(endingTime, seconds_added_per_bits * times);
@@ -105,11 +105,93 @@ if (streamelements_token !== "") {
                     }
                 }
 
-                else if (data['listener'] === "tip-latest") {
+                else if ((data['listener'] === "tip-latest") && donationEnable) {
                     if (data['event']['amount'] >= min_donation_amount) {
                         let times = Math.floor(data['event']['amount']/min_donation_amount);
                         addTime(endingTime, seconds_added_per_donation * times);
                         logMessage("StreamElements", `Added ${seconds_added_per_donation * times} Seconds Because ${data['event']['name']} Donated ${data['event']['amount']}$`);
+                        if (!users.includes(data['event']['name'])) {
+                            users.push(data['event']['name']);
+                        }
+                    }
+                }
+            }
+            else if (!countdownEnded && happy_hour_active) {
+                if ((data['listener'] === "subscriber-latest") && subEnable) {
+                    if (data['event']['gifted'] || data['event']['bulkGifted']) {
+                        let amount;
+                        if (data['event']['gifted']) amount = 1;
+                        else amount = data['event']['amount'];
+                        if (data['event']['tier'] == "prime" || data['event']['tier'] == "1000") {
+                            addTime(endingTime, seconds_added_per_giftsub_tier1_happy * amount);
+                            logMessage("StreamElements", `Added ${seconds_added_per_giftsub_tier1_happy * amount} Seconds Because ${data['event']['name']} Gifted ${amount} Tier 1 Subs`);
+                        }
+                        else if (data['event']['tier'] == "2000") {
+                            addTime(endingTime, seconds_added_per_giftsub_tier2_happy * amount);
+                            logMessage("StreamElements", `Added ${seconds_added_per_giftsub_tier2_happy * amount} Seconds Because ${data['event']['name']} Gifted ${amount} Tier 2 Subs`);
+                        }
+                        else if (data['event']['tier'] == "3000") {
+                            addTime(endingTime, seconds_added_per_giftsub_tier3_happy * amount);
+                            logMessage("StreamElements", `Added ${seconds_added_per_giftsub_tier3_happy * amount} Seconds Because ${data['event']['name']} Gifted ${amount} Tier 3 Subs`);
+                        }
+                    }
+                    else if (data['event']['amount'] != "1") {
+                        if (data['event']['tier'] == "prime") {
+                            addTime(endingTime, seconds_added_per_resub_prime_happy);
+                            logMessage("StreamElements", `Added ${seconds_added_per_resub_prime_happy} Seconds Because ${data['event']['name']} ReSubscribed With Prime`);
+                        }
+                        else if (data['event']['tier'] == "1000") {
+                            addTime(endingTime, seconds_added_per_resub_tier1_happy);
+                            logMessage("StreamElements", `Added ${seconds_added_per_resub_tier1_happy} Seconds Because ${data['event']['name']} ReSubscribed With Tier 1`);
+                        }
+                        else if (data['event']['tier'] == "2000") {
+                            addTime(endingTime, seconds_added_per_resub_tier2_happy);
+                            logMessage("StreamElements", `Added ${seconds_added_per_resub_tier2_happy} Seconds Because ${data['event']['name']} ReSubscribed With Tier 2`);
+                        }
+                        else if (data['event']['tier'] == "3000") {
+                            addTime(endingTime, seconds_added_per_resub_tier3_happy);
+                            logMessage("StreamElements", `Added ${seconds_added_per_resub_tier3_happy} Seconds Because ${data['event']['name']} ReSubscribed With Tier 3`);
+                        }
+                    }
+                    else {
+                        if (data['event']['tier'] == "prime") {
+                            addTime(endingTime, seconds_added_per_sub_prime_happy);
+                            logMessage("StreamElements", `Added ${seconds_added_per_sub_prime_happy} Seconds Because ${data['event']['name']} Subscribed With Prime`);
+                        }
+                        else if (data['event']['tier'] == "1000") {
+                            addTime(endingTime, seconds_added_per_sub_tier1_happy);
+                            logMessage("StreamElements", `Added ${seconds_added_per_sub_tier1_happy} Seconds Because ${data['event']['name']} Subscribed With Tier 1`);
+                        }
+                        else if (data['event']['tier'] == "2000") {
+                            addTime(endingTime, seconds_added_per_sub_tier2_happy);
+                            logMessage("StreamElements", `Added ${seconds_added_per_sub_tier2_happy} Seconds Because ${data['event']['name']} Subscribed With Tier 2`);
+                        }
+                        else if (data['event']['tier'] == "3000") {
+                            addTime(endingTime, seconds_added_per_sub_tier3_happy);
+                            logMessage("StreamElements", `Added ${seconds_added_per_sub_tier3_happy} Seconds Because ${data['event']['name']} Subscribed With Tier 3`);
+                        }
+                    }
+                    if (!users.includes(data['event']['name'])) {
+                        users.push(data['event']['name']);
+                    }
+                }
+
+                else if ((data['listener'] === "cheer-latest") && bitEnable) {
+                    if (data['event']['amount'] >= min_amount_of_bits) {
+                        let times = Math.floor(data['event']['amount']/min_amount_of_bits);
+                        addTime(endingTime, seconds_added_per_bits_happy * times);
+                        logMessage("StreamElements", `Added ${seconds_added_per_bits_happy * times} Seconds Because ${data['event']['name']} Donated ${data['event']['amount']} Bits`);
+                        if (!users.includes(data['event']['name'])) {
+                            users.push(data['event']['name']);
+                        }
+                    }
+                }
+
+                else if ((data['listener'] === "tip-latest") && donationEnable) {
+                    if (data['event']['amount'] >= min_donation_amount) {
+                        let times = Math.floor(data['event']['amount']/min_donation_amount);
+                        addTime(endingTime, seconds_added_per_donation_happy * times);
+                        logMessage("StreamElements", `Added ${seconds_added_per_donation_happy * times} Seconds Because ${data['event']['name']} Donated ${data['event']['amount']}$`);
                         if (!users.includes(data['event']['name'])) {
                             users.push(data['event']['name']);
                         }

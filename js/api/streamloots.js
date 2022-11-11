@@ -6,27 +6,54 @@ if (streamloots_token !== "") {
         data = await JSON.parse(event.data);
         logObject("Streamloots", data);
         if (data.data.type == "purchase") {
-            if (!countdownEnded) {
-                let chests;
-                if (typeof(data.data.fields[0].value) == "number") {
-                    chests = data.data.fields[0].value;
-                    if (chests >= min_amount_of_chests) {
-                        let times = Math.floor(chests/min_amount_of_chests);
-                        addTime(endingTime, seconds_added_per_chests * times);
-                        logMessage("Streamloots", `Added ${seconds_added_per_chests * times} Seconds Because ${data.data.fields[1].value} Bought ${chests} Chests`);
-                        if (!users.includes(data.data.fields[1].value)) {
-                            users.push(data.data.fields[1].value);
+            if (!countdownEnded && chestEnable) {
+                if(!happy_hour_active){
+                    let chests;
+                    if (typeof(data.data.fields[0].value) == "number") {
+                        chests = data.data.fields[0].value;
+                        if (chests >= min_amount_of_chests) {
+                            let times = Math.floor(chests/min_amount_of_chests);
+                            addTime(endingTime, seconds_added_per_chests * times);
+                            logMessage("Streamloots", `Added ${seconds_added_per_chests * times} Seconds Because ${data.data.fields[1].value} Bought ${chests} Chests`);
+                            if (!users.includes(data.data.fields[1].value)) {
+                                users.push(data.data.fields[1].value);
+                            }
+                        }
+                    }
+                    else {
+                        chests = data.data.fields[1].value;
+                        if (chests >= min_amount_of_chests) {
+                            let times = Math.floor(chests/min_amount_of_chests);
+                            addTime(endingTime, seconds_added_per_chests * times);
+                            logMessage("Streamloots", `Added ${seconds_added_per_chests * times} Seconds Because ${data.data.fields[0].value} Gifted ${chests} Chests`);
+                            if (!users.includes(data.data.fields[0].value)) {
+                                users.push(data.data.fields[0].value);
+                            }
                         }
                     }
                 }
-                else {
-                    chests = data.data.fields[1].value;
-                    if (chests >= min_amount_of_chests) {
-                        let times = Math.floor(chests/min_amount_of_chests);
-                        addTime(endingTime, seconds_added_per_chests * times);
-                        logMessage("Streamloots", `Added ${seconds_added_per_chests * times} Seconds Because ${data.data.fields[0].value} Gifted ${chests} Chests`);
-                        if (!users.includes(data.data.fields[0].value)) {
-                            users.push(data.data.fields[0].value);
+                if(happy_hour_active){
+                    let chests;
+                    if (typeof(data.data.fields[0].value) == "number") {
+                        chests = data.data.fields[0].value;
+                        if (chests >= min_amount_of_chests) {
+                            let times = Math.floor(chests/min_amount_of_chests);
+                            addTime(endingTime, seconds_added_per_chests_happy * times);
+                            logMessage("Streamloots", `Added ${seconds_added_per_chests_happy * times} Seconds Because ${data.data.fields[1].value} Bought ${chests} Chests`);
+                            if (!users.includes(data.data.fields[1].value)) {
+                                users.push(data.data.fields[1].value);
+                            }
+                        }
+                    }
+                    else {
+                        chests = data.data.fields[1].value;
+                        if (chests >= min_amount_of_chests) {
+                            let times = Math.floor(chests/min_amount_of_chests);
+                            addTime(endingTime, seconds_added_per_chests_happy * times);
+                            logMessage("Streamloots", `Added ${seconds_added_per_chests_happy * times} Seconds Because ${data.data.fields[0].value} Gifted ${chests} Chests`);
+                            if (!users.includes(data.data.fields[0].value)) {
+                                users.push(data.data.fields[0].value);
+                            }
                         }
                     }
                 }

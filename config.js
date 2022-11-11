@@ -5,8 +5,8 @@ var happy_hour = true //set to true or false, to enable/disable the happy hours 
 var bulk_enabled = true
 
 //Shortcuts
-var pauseShort = 'ctrl+alt+p'      // Default 'ctrl+alt+p'
-var happyHourShort = 'ctrl+alt+h'  // Default 'ctrl+alt+h'
+var pauseShort = "ctrl+alt+p"
+var happyHourShort = "ctrl+alt+h"
 
 // Login Data
 var twitch_channel_name = ""
@@ -18,6 +18,12 @@ var streamloots_token = ""
 var initialHoursConfig = 2
 var initialMinutesConfig = 0
 var initialSecondsConfig = 0
+
+// Enable/Disable Subs, Bits, Donations, Chests
+var subEnable = true
+var bitEnable = false
+var donationEnable = false
+var chestEnable = false
 
 // General Twitch, Streamlabs And StreamElements Config
 var seconds_added_per_sub_prime = 60
@@ -34,6 +40,18 @@ var seconds_added_per_giftsub_tier1 = 60
 var seconds_added_per_giftsub_tier2 = 180
 var seconds_added_per_giftsub_tier3 = 480
 
+var min_amount_of_bits = 50
+var seconds_added_per_bits = 30
+
+// Streamlabs And StreamElements Config
+var min_donation_amount = 1
+var seconds_added_per_donation = 30
+
+// Streamloots Config
+var min_amount_of_chests = 1
+var seconds_added_per_chests = 30
+
+
 // General Twitch, Streamlabs And StreamElements Config for Happy Hour
 var seconds_added_per_sub_prime_happy = 120
 var seconds_added_per_sub_tier1_happy = 120
@@ -49,13 +67,10 @@ var seconds_added_per_giftsub_tier1_happy = 120
 var seconds_added_per_giftsub_tier2_happy = 360
 var seconds_added_per_giftsub_tier3_happy = 960
 
-// var min_amount_of_bits = 500
-// var seconds_added_per_bits = 30
+var seconds_added_per_bits_happy = 60
 
 // Streamlabs And StreamElements Config
-// var min_donation_amount = 5
-// var seconds_added_per_donation = 30
+var seconds_added_per_donation_happy = 60
 
 // Streamloots Config
-// var min_amount_of_chests = 5
-// var seconds_added_per_chests = 30
+var seconds_added_per_chests_happy = 60
