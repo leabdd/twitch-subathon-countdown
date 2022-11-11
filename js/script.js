@@ -50,8 +50,7 @@ startBtn.addEventListener("click", function(){
 	
 	let timeNow = new Date(Date.now());
 	
-	document.getElementById("resetBtn").style.visibility = "hidden";
-	document.getElementById("startBtn").style.visibility = "hidden";
+	document.getElementById("startPage").style.visibility = "hidden";
 	document.getElementById("container").style.visibility = "visible";
 	
 	endingTime = timeFunc.addHours(timeNow, initialHours);
