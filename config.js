@@ -1,15 +1,16 @@
 // Happy Hour
-var happy_hour = true //set to true or false, to enable/disable the happy hours function
+var happy_hour = true // set to true or false, to enable/disable the happy hours function
+var randHappy = true // only works if happy_hour = true
 
 // Bulk (if you want multiple subs to add to a big sum or each alone)
-var bulk_enabled = true
+var bulk_enabled = false
 
 //Shortcuts
 var pauseShort = "ctrl+alt+p"
 var happyHourShort = "ctrl+alt+h"
 
 // Login Data
-var twitch_channel_name = ""
+var twitch_channel_name = "majijej"
 var streamlabs_token = ""
 var streamelements_token = ""
 var streamloots_token = ""
@@ -21,7 +22,7 @@ var initialSecondsConfig = 0
 
 // Enable/Disable Subs, Bits, Donations, Chests
 var subEnable = true
-var bitEnable = false
+var bitEnable = true
 var donationEnable = false
 var chestEnable = false
 

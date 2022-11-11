@@ -115,8 +115,8 @@ if (twitch_channel_name !== "") {
                         logMessage("Twitch", `Added ${seconds_added_per_giftsub_prime} Seconds Because ${username} gifted Sub With Prime`);
                         break;
                     case "1000":
-                        addTime(endingTime, seconds_added_per_giftsub_tier1);
-                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier1} Seconds Because ${username} gifted Sub With Tier 1`);
+                        addTime(endingTime, seconds_added_per_giftsub_tier1 * months);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier1 * months} Seconds Because ${username} gifted ${months} Month Sub With Tier 1`);
                         break;
                     case "2000":
                         addTime(endingTime, seconds_added_per_giftsub_tier2);
