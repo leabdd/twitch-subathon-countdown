@@ -10,7 +10,7 @@ var pauseShort = "ctrl+alt+p"
 var happyHourShort = "ctrl+alt+h"
 
 // Login Data
-var twitch_channel_name = "majijej"
+var twitch_channel_name = ""
 var streamlabs_token = ""
 var streamelements_token = ""
 var streamloots_token = ""
@@ -22,7 +22,7 @@ var initialSecondsConfig = 0
 
 // Enable/Disable Subs, Bits, Donations, Chests
 var subEnable = true
-var bitEnable = true
+var bitEnable = false
 var donationEnable = false
 var chestEnable = false
 
