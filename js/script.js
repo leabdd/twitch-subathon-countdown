@@ -183,7 +183,7 @@ const getNextTime = () => {
 		}
 		if(scheduleHappy && happy_hour && !scheduleHappyBool){
 			scheduleHappyBool = true
-			scheduleHappy()
+			scheduleHappyFunc()
 		}
 	}
 	timeText.innerText = time;
@@ -205,16 +205,15 @@ function randomHappy(){
 	}
 }
 
-var nowString
-function scheduleHappy(){
-	nowString = new Date()
-	if(nowString.getDay() == 6){
-		if(nowString.getUTCHours() == 18){
-			if(nowString.getUTCMinutes() == 00){
+function scheduleHappyFunc(){
+	let now = new Date()
+	if(now.getDay() == scheduleHappyDay){
+		if(now.getUTCHours() == scheduleHappyHour){
+			if(now.getUTCMinutes() == 00){
 				logMessage("Schedule","It's time!")
 				happyHourFunc()
 				setTimeout(happyHourFunc, 3600000)
-				setTimeout(scheduleHappy, 36000000)
+				setTimeout(scheduleHappyFunc, 36000000)
 			}
 		}
 	}
