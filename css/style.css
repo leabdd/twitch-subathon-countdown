@@ -41,6 +41,7 @@ body {
     width: 500px;
     height: 180px;
     border-radius: 30px;
+    visibility: hidden;
 }
 
 #startPage {
