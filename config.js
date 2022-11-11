@@ -1,6 +1,6 @@
 // Happy Hour
 var happy_hour = true // set to true or false, to enable/disable the happy hours function
-var randHappy = true // only works if happy_hour = true
+var randHappy = false // only works if happy_hour = true
 
 // Bulk (if you want multiple subs to add to a big sum or each alone)
 var bulk_enabled = false
