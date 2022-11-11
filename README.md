@@ -44,6 +44,7 @@
 <p>If this is true, you can turn enable Happy Hour with the Shortcut. If it is false, the feature is disabled and cant be enabled.</p>
 <p>You have to set the Happy Hour time values manually.</p>
 <p>If enabled it can randomly activate the Happy Hour. It will last for one hour, but can be turned off manually with the Shortkey.</p>
+<p>In the Config you can set a specific Date and Time. At that a Happy Hour will happen.</p>
 
 <h3>Bulk</h3>
 <p>This enables that multiple Subs get added to the timer at once.</p>
