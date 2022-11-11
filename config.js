@@ -1,7 +1,10 @@
 // Happy Hour
 var happy_hour = true // set to true or false, to enable/disable the happy hours function
 var randHappy = false // only works if happy_hour = true
-var scheduleHappy = false // only works if happy_hour = true | Happens every Friday 18:00:00 UTC
+var scheduleHappy = false // only works if happy_hour = true 
+
+var scheduleHappyDay = 5 // Weekdays from 0 to 6 from Sunday to Saturday | Default 5 is Friday
+var scheduleHappyHour = 18 // Hours in 24 format UTC Time | Default 18 is 20:00 CEST
 
 // Bulk (if you want multiple subs to add to a big sum or each alone)
 var bulk_enabled = false
