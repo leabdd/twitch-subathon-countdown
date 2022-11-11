@@ -1,5 +1,6 @@
 <h1 align="center">Twitch Subathon Countdown Template</h1>
-<p align="center">This is the template I created for my Twitch Subathon Countdowns</p>
+<p align="center">This is a Twitch Subathon Countdown originally by JayexDesigns.</p>
+<p align="center">The CSS Code is updated by Johnnycyan. The JS Files are updated by me (leabdd) to add functionalities.</p>
 <br/>
 
 <h2>Description</h2>
