@@ -4,6 +4,8 @@
 
 <h2>Description</h2>
 <p>A subathon timer that increases when someone subscribes, donates money, donates bits or purchases streamloots chests.</p>
+<p>Added is a Timer that gets saved (in localStorage) and can be reset.</p>
+<p>When you open the index.html you get to chose between "Reset" or "Start".</p>
 <br/>
 
 <h2>Preview</h2>
