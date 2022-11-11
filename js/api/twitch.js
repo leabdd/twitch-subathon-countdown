@@ -12,23 +12,65 @@ if (twitch_channel_name !== "") {
 
     client.on('subscription', (channel, username, methods, message, userstate) => {
         if (!countdownEnded) {
-            switch (methods['plan']) {
-                case "Prime":
-                    addTime(endingTime, seconds_added_per_sub_prime);
-                    logMessage("Twitch", `Added ${seconds_added_per_sub_prime} Seconds Because ${username} Subscribed With Prime`);
-                    break;
-                case "1000":
-                    addTime(endingTime, seconds_added_per_sub_tier1);
-                    logMessage("Twitch", `Added ${seconds_added_per_sub_tier1} Seconds Because ${username} Subscribed With Tier 1`);
-                    break;
-                case "2000":
-                    addTime(endingTime, seconds_added_per_sub_tier2);
-                    logMessage("Twitch", `Added ${seconds_added_per_sub_tier2} Seconds Because ${username} Subscribed With Tier 2`);
-                    break;
-                case "3000":
-                    addTime(endingTime, seconds_added_per_sub_tier3);
-                    logMessage("Twitch", `Added ${seconds_added_per_sub_tier3} Seconds Because ${username} Subscribed With Tier 3`);
-                    break;
+            if(happy_hour == true && happy_hour_active == false){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_sub_prime);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_prime} Seconds Because ${username} Subscribed With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_sub_tier1);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier1} Seconds Because ${username} Subscribed With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_sub_tier2);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier2} Seconds Because ${username} Subscribed With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_sub_tier3);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier3} Seconds Because ${username} Subscribed With Tier 3`);
+                        break;
+                }
+            }
+            else if(happy_hour == true && happy_hour_active == true){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_sub_prime_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_prime_happy} Seconds Because ${username} Subscribed With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_sub_tier1_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier1_happy} Seconds Because ${username} Subscribed With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_sub_tier2_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier2_happy} Seconds Because ${username} Subscribed With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_sub_tier3_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier3_happy} Seconds Because ${username} Subscribed With Tier 3`);
+                        break;
+                }
+            }
+            else if(happy_hour == false){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_sub_prime);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_prime} Seconds Because ${username} Subscribed With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_sub_tier1);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier1} Seconds Because ${username} Subscribed With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_sub_tier2);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier2} Seconds Because ${username} Subscribed With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_sub_tier3);
+                        logMessage("Twitch", `Added ${seconds_added_per_sub_tier3} Seconds Because ${username} Subscribed With Tier 3`);
+                        break;
+                }
             }
             if (!users.includes(username)) {
                 users.push(username);
@@ -38,23 +80,65 @@ if (twitch_channel_name !== "") {
 
     client.on('resub', (channel, username, months, message, userstate, methods) => {
         if (!countdownEnded) {
-            switch (methods['plan']) {
-                case "Prime":
-                    addTime(endingTime, seconds_added_per_resub_prime);
-                    logMessage("Twitch", `Added ${seconds_added_per_resub_prime} Seconds Because ${username} ReSubscribed With Prime`);
-                    break;
-                case "1000":
-                    addTime(endingTime, seconds_added_per_resub_tier1);
-                    logMessage("Twitch", `Added ${seconds_added_per_resub_tier1} Seconds Because ${username} ReSubscribed With Tier 1`);
-                    break;
-                case "2000":
-                    addTime(endingTime, seconds_added_per_resub_tier2);
-                    logMessage("Twitch", `Added ${seconds_added_per_resub_tier2} Seconds Because ${username} ReSubscribed With Tier 2`);
-                    break;
-                case "3000":
-                    addTime(endingTime, seconds_added_per_resub_tier3);
-                    logMessage("Twitch", `Added ${seconds_added_per_resub_tier3} Seconds Because ${username} ReSubscribed With Tier 3`);
-                    break;
+            if(happy_hour == true && happy_hour_active == false){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_resub_prime);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_prime} Seconds Because ${username} ReSubscribed With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_resub_tier1);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier1} Seconds Because ${username} ReSubscribed With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_resub_tier2);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier2} Seconds Because ${username} ReSubscribed With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_resub_tier3);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier3} Seconds Because ${username} ReSubscribed With Tier 3`);
+                        break;
+                }
+            }
+            else if(happy_hour == true && happy_hour_active == true){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_resub_prime_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_prime_happy} Seconds Because ${username} ReSubscribed With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_resub_tier1_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier1_happy} Seconds Because ${username} ReSubscribed With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_resub_tier2_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier2_happy} Seconds Because ${username} ReSubscribed With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_resub_tier3_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier3_happy} Seconds Because ${username} ReSubscribed With Tier 3`);
+                        break;
+                }
+            }
+            else if(happy_hour == false){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_resub_prime);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_prime} Seconds Because ${username} ReSubscribed With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_resub_tier1);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier1} Seconds Because ${username} ReSubscribed With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_resub_tier2);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier2} Seconds Because ${username} ReSubscribed With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_resub_tier3);
+                        logMessage("Twitch", `Added ${seconds_added_per_resub_tier3} Seconds Because ${username} ReSubscribed With Tier 3`);
+                        break;
+                }
             }
             if (!users.includes(username)) {
                 users.push(username);
@@ -64,23 +148,65 @@ if (twitch_channel_name !== "") {
 
     client.on('subgift', (channel, username, months, recipient, methods, userstate) => {
         if (!countdownEnded) {
-            switch (methods['plan']) {
-                case "Prime":
-                    addTime(endingTime, seconds_added_per_giftsub_tier1);
-                    logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier1} Seconds Because ${username} Gifted A Tier 1 Sub`);
-                    break;
-                case "1000":
-                    addTime(endingTime, seconds_added_per_giftsub_tier1);
-                    logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier1} Seconds Because ${username} Gifted A Tier 1 Sub`);
-                    break;
-                case "2000":
-                    addTime(endingTime, seconds_added_per_giftsub_tier2);
-                    logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier2} Seconds Because ${username} Gifted A Tier 2 Sub`);
-                    break;
-                case "3000":
-                    addTime(endingTime, seconds_added_per_giftsub_tier3);
-                    logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier3} Seconds Because ${username} Gifted A Tier 3 Sub`);
-                    break;
+            if(happy_hour == true && happy_hour_active == false){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_giftsub_prime);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_prime} Seconds Because ${username} gifted Sub With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier1);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier1} Seconds Because ${username} gifted Sub With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier2);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier2} Seconds Because ${username} gifted Sub With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier3);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier3} Seconds Because ${username} gifted Sub With Tier 3`);
+                        break;
+                }
+            }
+            else if(happy_hour == true && happy_hour_active == true){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_giftsub_prime_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_prime_happy} Seconds Because ${username} gifted Sub With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier1_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier1_happy} Seconds Because ${username} gifted Sub With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier2_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier2_happy} Seconds Because ${username} gifted Sub With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier3_happy);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier3_happy} Seconds Because ${username} gifted Sub With Tier 3`);
+                        break;
+                }
+            }
+            else if(happy_hour == false){
+                switch (methods['plan']) {
+                    case "Prime":
+                        addTime(endingTime, seconds_added_per_giftsub_tier1);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier1} Seconds Because ${username} gifted Sub With Prime`);
+                        break;
+                    case "1000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier1);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier1} Seconds Because ${username} gifted Sub With Tier 1`);
+                        break;
+                    case "2000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier2);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier2} Seconds Because ${username} gifted Sub With Tier 2`);
+                        break;
+                    case "3000":
+                        addTime(endingTime, seconds_added_per_giftsub_tier3);
+                        logMessage("Twitch", `Added ${seconds_added_per_giftsub_tier3} Seconds Because ${username} gifted Sub With Tier 3`);
+                        break;
+                }
             }
             if (!users.includes(username)) {
                 users.push(username);
