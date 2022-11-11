@@ -160,6 +160,7 @@ function getRandomInt(min, max) {
 }
 
 var randomHappyBool = false
+var scheduleHappyBool = false
 
 const getNextTime = () => {
 	
@@ -179,6 +180,10 @@ const getNextTime = () => {
 		if(randHappy && happy_hour && !randomHappyBool){
 			randomHappyBool = true
 			setTimeout(randomHappy,1000)
+		}
+		if(scheduleHappy && happy_hour && !scheduleHappyBool){
+			scheduleHappyBool = true
+			scheduleHappy()
 		}
 	}
 	timeText.innerText = time;
@@ -200,6 +205,20 @@ function randomHappy(){
 	}
 }
 
+var nowString
+function scheduleHappy(){
+	nowString = new Date()
+	if(nowString.getDay() == 6){
+		if(nowString.getUTCHours() == 18){
+			if(nowString.getUTCMinutes() == 00){
+				logMessage("Schedule","It's time!")
+				happyHourFunc()
+				setTimeout(happyHourFunc, 3600000)
+				setTimeout(scheduleHappy, 36000000)
+			}
+		}
+	}
+}
 
 var firstSub = true;
 var endingTimeBeforeCounter;

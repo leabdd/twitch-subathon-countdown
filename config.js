@@ -1,6 +1,7 @@
 // Happy Hour
 var happy_hour = true // set to true or false, to enable/disable the happy hours function
 var randHappy = false // only works if happy_hour = true
+var scheduleHappy = false // only works if happy_hour = true | Happens every Friday 18:00:00 UTC
 
 // Bulk (if you want multiple subs to add to a big sum or each alone)
 var bulk_enabled = false
@@ -54,18 +55,18 @@ var seconds_added_per_chests = 30
 
 
 // General Twitch, Streamlabs And StreamElements Config for Happy Hour
-var seconds_added_per_sub_prime_happy = 120
-var seconds_added_per_sub_tier1_happy = 120
-var seconds_added_per_sub_tier2_happy = 360
+var seconds_added_per_sub_prime_happy = 85
+var seconds_added_per_sub_tier1_happy = 85
+var seconds_added_per_sub_tier2_happy = 300
 var seconds_added_per_sub_tier3_happy = 960
 
-var seconds_added_per_resub_prime_happy = 120
-var seconds_added_per_resub_tier1_happy = 120
-var seconds_added_per_resub_tier2_happy = 360
+var seconds_added_per_resub_prime_happy = 85
+var seconds_added_per_resub_tier1_happy = 85
+var seconds_added_per_resub_tier2_happy = 300
 var seconds_added_per_resub_tier3_happy = 960
 
-var seconds_added_per_giftsub_tier1_happy = 120
-var seconds_added_per_giftsub_tier2_happy = 360
+var seconds_added_per_giftsub_tier1_happy = 85
+var seconds_added_per_giftsub_tier2_happy = 300
 var seconds_added_per_giftsub_tier3_happy = 960
 
 var seconds_added_per_bits_happy = 60
