@@ -51,9 +51,27 @@ resetBtn.addEventListener("click", function(){
 startBtn.addEventListener("click", function(){
 
 	if(paused){
-		initialHours = window.localStorage.getItem('initialHours')
-		initialMinutes = window.localStorage.getItem('initialMinutes')
-		initialSeconds = window.localStorage.getItem('initialSeconds')
+		var initialHoursLocal = window.localStorage.getItem('initialHours')
+		if(initialHoursLocal !== null) {
+			initialHours  = initialHoursLocal;
+			logMessage("Core", "Found initialHours in localStorage.")
+		} else {
+			initialHours = initialHoursConfig;
+		}
+		var initialMinutesLocal = window.localStorage.getItem('initialMinutes')
+		if(initialMinutesLocal !== null) {
+			initialMinutes = initialMinutesLocal;
+			logMessage("Core", "Found initialMinutes in localStorage.")
+		} else {
+			initialMinutes = initialMinutesConfig;
+		}
+		var initialSecondsLocal = window.localStorage.getItem('initialSeconds')
+		if(initialSecondsLocal !== null) {
+			initialSeconds  = initialSecondsLocal;
+			logMessage("Core", "Found initialSeconds in localStorage.")
+		} else {
+			initialSeconds = initialSecondsConfig;
+		}
 	}
 	
 	let timeNow = new Date(Date.now());
