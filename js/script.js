@@ -70,14 +70,14 @@ startBtn.addEventListener("click", function(){
 });
 
 
-Mousetrap.bind('ctrl+alt+p', function(e) {
+Mousetrap.bind(pauseShort, function(e) {
 	paused = true;
 	logMessage("Core", "Timer was paused");
 	document.getElementById("startPage").style.visibility = "visible";
 	document.getElementById("container").style.visibility = "hidden";
 });
 
-Mousetrap.bind('ctrl+alt+h', async function(e){
+Mousetrap.bind(happyHourShort, async function(e){
 	if(happy_hour == true && happy_hour_active == false){
 		logMessage("Core","Happy Hour activated");
 		happy_hour_active = true;

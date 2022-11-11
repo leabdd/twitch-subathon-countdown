@@ -4,6 +4,10 @@ var happy_hour = true //set to true or false, to enable/disable the happy hours 
 // Bulk (if you want multiple subs to add to a big sum or each alone)
 var bulk_enabled = true;
 
+//Shortcuts
+var pauseShort = 'ctrl+alt+p'
+var happyHourShort = 'ctrl+alt+h'
+
 // Login Data
 var twitch_channel_name = ""
 var streamlabs_token = ""
