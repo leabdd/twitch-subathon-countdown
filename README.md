@@ -48,6 +48,9 @@
 <p>This enables that multiple Subs get added to the timer at once.</p>
 <p>For Example when a user gifts 10 Subs.</p>
 
+<h3>Full control on what to use</h3>
+<p>You can enable and disable if you want to add time for Subscriptions, Bits, Donations or Chests.</p>
+
 <h3>Other Values</h3>
 <p>Change the other values to set the amount of seconds that will be added for the subscriptions, donations... And the minimum donation amounts to trigger the countdown increase.</p>
 
