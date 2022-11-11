@@ -30,6 +30,7 @@
 
 <h3>StreamElements Token</h3>
 <p>To get the token you'll have to go to your <a href="https://streamelements.com/dashboard/account/channels">StreamElements channels dashboard</a>, then click on show secrets, copy the Overlay token and paste the code on the "streamelements_token" variable in the "config.js" file.</p>
+<p>If you want to reset you have to refresh the Browser Source and then press the Reset button, via the Pause Feature it doesn't work that well currently.</p>
 <img src="./auth_streamelements.png">
 
 <h3>Streamloots Token</h3>
