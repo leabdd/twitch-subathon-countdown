@@ -139,7 +139,7 @@ async function specialHourFunc(type){
 	if (type === 'Happy') happy_hour_active = activate;
 	if (type === 'Random') random_hour_active = activate;
 
-	let animation = (happy_hour_active || random_hour_active) ? ', url(https://drive.google.com/uc?id=1oduFlPg84O1DliM5FsLvJJsnwZ4m1Vpm)' : '';
+	let animation = (happy_hour_active || random_hour_active) ? ', url(https://www.dropbox.com/scl/fi/izqqceg8dh9oquq02bqfz/Subathon-Gradient-Animation-Small.webp?rlkey=ggcuagax92dqyovj7lsdyq137&dl=1)' : '';
 
 	document.getElementById("SpecialHourText").innerHTML = `${type} Hour ${toggleText}!`;
 	document.getElementById("SpecialHourText").animate({opacity: [ 0, 1 ], easing: [ 'ease-in', 'ease-out' ],}, 500);
